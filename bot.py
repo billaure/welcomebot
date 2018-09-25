@@ -4,8 +4,6 @@ from time import sleep
 import traceback
 import sys
 from html import escape
-import Image
-image = Image.open('electronero.png')
 
 from telegram import Emoji, ParseMode, TelegramError, Update
 from telegram.ext import Updater, MessageHandler, CommandHandler, Filters
