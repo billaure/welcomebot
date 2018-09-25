@@ -105,7 +105,7 @@ def welcome(bot, update):
     # Use default message if there's no custom one set
     if text is None:
         text = 'Hello $username! Welcome to $title %s' \
-                  % image.show()
+                  % Emoji.GRINNING_FACE_WITH_SMILING_EYES
 
     # Replace placeholders and send message
     text = text.replace('$username',
@@ -162,7 +162,7 @@ def introduce(bot, update):
     text = 'Hello %s! I will now greet anyone who joins this chat with a' \
            ' nice message %s \nCheck the /help command for more info!'\
            % (update.message.chat.title,
-              image.show())
+              Emoji.GRINNING_FACE_WITH_SMILING_EYES)
     send_async(bot, chat_id=chat_id, text=text)
 
 
