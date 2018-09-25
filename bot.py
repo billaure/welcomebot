@@ -4,6 +4,8 @@ from time import sleep
 import traceback
 import sys
 from html import escape
+import Image
+image = Image.open('electronero.png')
 
 from telegram import Emoji, ParseMode, TelegramError, Update
 from telegram.ext import Updater, MessageHandler, CommandHandler, Filters
@@ -13,12 +15,11 @@ from telegram.contrib.botan import Botan
 import python3pickledb as pickledb
 
 # Configuration
-BOTNAME = 'usernameofbot'
-TOKEN = 'TOKEN'
+BOTNAME = 'electronerobot'
+TOKEN = '672697280:AAGRCFuhdODexTyZKgMWMf9L1OAXkmYYFbY'
 BOTAN_TOKEN = 'BOTANTOKEN'
 
-help_text = 'Welcomes everyone that enters a group chat that this bot is a ' \
-            'part of. By default, only the person who invited the bot into ' \
+help_text = 'Hi _$username_, Thanks for joining Electronero  ' \
             'the group is able to change settings.\nCommands:\n\n' \
             '/welcome - Set welcome message\n' \
             '/goodbye - Set goodbye message\n' \
@@ -30,10 +31,7 @@ help_text = 'Welcomes everyone that enters a group chat that this bot is a ' \
             '/unquiet - Enable "Sorry, only the person who..." ' \
             '& help messages\n\n' \
             'You can use _$username_ and _$title_ as placeholders when setting' \
-            ' messages. [HTML formatting]' \
-            '(https://core.telegram.org/bots/api#formatting-options) ' \
-            'is also supported.\n' \
-            'Please [rate me](http://storebot.me/bot/jh0ker_welcomebot) :) '
+            'Please [visit](https://electronero.org) '
 '''
 Create database object
 Database schema:
@@ -109,7 +107,7 @@ def welcome(bot, update):
     # Use default message if there's no custom one set
     if text is None:
         text = 'Hello $username! Welcome to $title %s' \
-                  % Emoji.GRINNING_FACE_WITH_SMILING_EYES
+                  % image.show()
 
     # Replace placeholders and send message
     text = text.replace('$username',
@@ -166,7 +164,7 @@ def introduce(bot, update):
     text = 'Hello %s! I will now greet anyone who joins this chat with a' \
            ' nice message %s \nCheck the /help command for more info!'\
            % (update.message.chat.title,
-              Emoji.GRINNING_FACE_WITH_SMILING_EYES)
+              image.show())
     send_async(bot, chat_id=chat_id, text=text)
 
 
